@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6D7t6vwehQ6RoxVITk6Ykz5N5hDnp2eT7fRRfXabm5nEzfdlhuXlaVgP74" crossorigin="anonymous">
+
+    <!-- Custom CSS for Canva-style Design -->
+    <style>
+        body {
+            background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 700px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+        }
+
+        .form-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .form-section:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #2575fc;
+            border: none;
+            color: white;
+            border-radius: 30px;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e65c5;
+        }
+
+        .nav-tabs .nav-link {
+            font-weight: bold;
+            color: #2575fc;
+            border: none;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #2575fc;
+            color: white;
+        }
+
+        .form-group img {
+            width: 100%;
+            height: auto;
+            max-width: 180px;
+            border-radius: 50%;
+            border: 5px solid #2575fc;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-group img:hover {
+            transform: scale(1.1);
+        }
+
+        .form-group input[type="file"] {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Animation for the Profile Picture Upload */
+        .profile-upload {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Shadow effect for the tab buttons */
+        .nav-tabs .nav-link {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        /* Mobile-friendly tweaks */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="form-header">
+            <h2>User Management System</h2>
+            <p>Please login or sign up to continue.</p>
+        </div>
+
+        <!-- Login / Signup Tabs -->
+        <div class="form-section">
+            <ul class="nav nav-tabs" id="formTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="loginTab" data-bs-toggle="tab" href="#login" role="tab"
+                        aria-controls="login" aria-selected="true">Login</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="signUpTab" data-bs-toggle="tab" href="#signup" role="tab"
+                        aria-controls="signup" aria-selected="false">Sign Up</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="formTabContent">
+                <!-- Login Form -->
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="loginTab">
+                    <form id="loginForm" onsubmit="return validateLoginForm(event)">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+
+                <!-- Sign Up Form -->
+                <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signUpTab">
+                    <form id="signupForm" onsubmit="return validateSignupForm(event)">
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signupEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Picture Upload Section -->
+        <div class="form-section mt-4 profile-upload">
+            <h4>Profile Picture</h4>
+            <div class="form-group">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profilePic">
+                <input type="file" class="form-control mt-2" id="profilePicInput" onchange="changeProfilePic(event)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript for Form Validation and Interactivity -->
+    <script>
+        // Validate Login Form
+        function validateLoginForm(event) {
+            event.preventDefault();
+            var email = document.getElementById('loginEmail').value;
+            var password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            // Dummy login validation (this can be replaced with real logic)
+            alert("Login successful!");
+            return true;
+        }
+
+        // Validate Sign Up Form
+        function validateSignupForm(event) {
+            event.preventDefault();
+            var email = document.getElementById('signupEmail').value;
+            var password = document.getElementById('signupPassword').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!email || !password || !confirmPassword) {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // Dummy signup validation (this can be replaced with real logic)
+            alert("Sign Up successful!");
+            return true;
+        }
+
+        // Change Profile Picture
+        function changeProfilePic(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function() {
+                var profilePic = document.getElementById('profilePic');
+                profilePic.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script

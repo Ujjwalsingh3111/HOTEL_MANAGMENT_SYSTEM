@@ -1,0 +1,89 @@
+/* General Body Styling */
+body {
+    background-color: #f4f7fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Container for centering the forms */
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+}
+
+/* Header styling */
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 32px;
+    color: #4CAF50;
+}
+
+p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Form section for login and signup */
+.form-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input field styling */
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    font-size: 16px;
+}
+
+/* Button styling */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* Tab styling */
+.nav-tabs .nav-link {
+    color: #4CAF50;
+    border: none;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Profile Picture Styling */
+.form-group img {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.form-group input[type="file"] {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Custom Styling for Validation Messages */
+.alert {
+    color: red;
+    font-size: 14px;
+}
